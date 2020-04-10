@@ -2,6 +2,10 @@ class Game {
   constructor() {
     this.userScore = 0;
     this.compScore = 0;
+    this.userWeapon = "";
+    this.compWeapon = "";
+
+    this.choices = ["rock", "paper", "scissors"];
 
     this.userScoreBoard = document.querySelector("#userScore");
     this.compScoreBoard = document.querySelector("#compScore");
@@ -13,10 +17,6 @@ class Game {
     this.faceOffLeft = document.querySelector("#faceOffLeft");
     this.faceOffRight = document.querySelector("#faceOffRight");
 
-    this.userWeapon = "";
-    this.compWeapon = "";
-    this.choices = ["rock", "paper", "scissors"];
-
     this.userChoice.map(button => button.addEventListener("click", button => {
       this.faceOff(button.target.id);
       this.faceOffBannerAnimation();
@@ -27,19 +27,15 @@ class Game {
   faceOff(selectedButton) {
     this.disableButtons();
 
-    this.faceOffLeft.setAttribute("src", "images/rock.png");
-    this.faceOffRight.setAttribute("src", "images/rockmirror.png");
-    this.faceOffLeft.classList.toggle("faceOffLeft");
-    this.faceOffRight.classList.toggle("faceOffRight");
+    this.resetFaceOff();
+
+    this.toggleFaceOff();
 
     this.userWeapon = selectedButton;
     this.compWeapon = this.choices[Math.floor(Math.random() * this.choices.length)];
   }
 
   faceOffBannerAnimation() {
-    this.gameBanner.style.backgroundColor = "rgb(38, 159, 246)";
-    //
-
     let currentPercent = 0;
     setInterval(() => {
       if (currentPercent < 100) {
@@ -100,8 +96,7 @@ class Game {
       default:
         this.faceOffRight.setAttribute("src", "images/rockmirror.png");
     }
-    this.faceOffLeft.classList.toggle("faceOffLeft");
-    this.faceOffRight.classList.toggle("faceOffRight");
+    this.toggleFaceOff();
   }
 
   pickWinner() {
@@ -117,17 +112,40 @@ class Game {
         this.gameStatus.textContent = "You Win!";
         this.gameBanner.style.background = "rgb(77, 218, 20)";
         this.userScore += 1;
-        this.userScoreBoard.textContent = this.userScore;
       }
 
       else {
         this.gameStatus.textContent = "You Lose!";
         this.gameBanner.style.background = "rgb(240, 128, 37)";
         this.compScore += 1;
-        this.compScoreBoard.textContent = this.compScore;
       }
     }
+    this.updateScoreBoard();
     this.endGame();
+  }
+
+  updateScoreBoard() {
+    this.userScoreBoard.textContent = this.userScore;
+    this.compScoreBoard.textContent = this.compScore;
+  }
+
+  resetFaceOff() {
+    this.faceOffLeft.setAttribute("src", "images/rock.png");
+    this.faceOffRight.setAttribute("src", "images/rockmirror.png");
+    this.gameBanner.style.backgroundColor = "rgb(38, 159, 246)";
+  }
+
+  toggleFaceOff() {
+    this.faceOffLeft.classList.toggle("faceOffLeft");
+    this.faceOffRight.classList.toggle("faceOffRight");
+  }
+
+  enableButtons() {
+    this.userChoice.map(button => {button.disabled = false; button.classList.remove("disabled")});
+  }
+
+  disableButtons() {
+    this.userChoice.map(button => {button.disabled = true; button.setAttribute("class", "disabled")});
   }
 
   endGame() {
@@ -144,16 +162,17 @@ class Game {
     }
   }
 
-  enableButtons() {
-    this.userChoice.map(button => {button.disabled = false; button.classList.remove("disabled")});
-  }
-
-  disableButtons() {
-    this.userChoice.map(button => {button.disabled = true; button.setAttribute("class", "disabled")});
+  restart() {
+    this.userScore = 0;
+    this.compScore = 0;
+    this.gameStatus.textContent = "Let's Play!";
+    this.resetFaceOff();
+    this.updateScoreBoard();
+    this.enableButtons();
   }
 }
 
-new Game();
+let playGame = new Game();
 
 const resetButton = document.querySelector("#reset");
-resetButton.addEventListener("click", () => new Game());
+resetButton.addEventListener("click", () => playGame.restart());
