@@ -109,3 +109,29 @@ button {
     transform: rotate(5deg);
   }
 }
+
+@media (max-width: 900px) {
+  html {
+    font-size: 1.6rem;
+  }
+
+  .choiceSelect {
+    margin-top: 3vh;
+  }
+
+  #faceOffLeft, #faceOffRight {
+    margin-top: 4vh;
+  }
+
+  #scoreBoard {width: 100vw;}
+  #userScoreBoard, #compScoreBoard {
+    line-height: 8vh;
+    height: 18vh;
+    width: 40vw;
+  }
+  #userScoreBoard {margin-left: 1vw;}
+  #compScoreBoard  {margin-right: 6vw;}
+}
+@media (max-height: 900px) {
+
+}
