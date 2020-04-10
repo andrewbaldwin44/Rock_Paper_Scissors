@@ -2,33 +2,35 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png">
-    <link rel="stylesheet" tyle="text/css" href="style.css">
-    <script src="script.js"></script>
+    <link rel="shortcut icon" type="image/ico" href="images/favicon.ico"/>
     <title>Rock! Paper! Scissors!</title>
     <h1>First Player to Reach 5 Points Wins the Game!</h1>
   </head>
   <body>
-    <section id="usrInput">
-      <button class="genBtns" id="rock" onclick="gamePlay('rock'), endGame()">Rock</button>
-      <button class="genBtns" id="paper" onclick="gamePlay('paper'), endGame()">Paper</button>
-      <button class="genBtns" id="scissors" onclick="gamePlay('scissors'), endGame()">Scissors</button>
+    <section id="userInput">
+      <button class="choiceSelect" id="rock">Rock</button>
+      <button class="choiceSelect" id="paper">Paper</button>
+      <button class="choiceSelect" id="scissors">Scissors</button>
     </section>
-    <section class="tiles">
-        <span>You Picked: </span>
-        <span class="alignRight" id="usrPicked"></span>
-        <span>The Computer Picked: </span>
-        <span class="alignRight" id="compPicked"></span>
+    <section id="faceOff">
+        <img alt="game image for rock" src="images/rock.png" id="faceOffLeft"/>
+        <img alt="game image for rock" src="images/rockmirror.png" id="faceOffRight"/>
     </section>
-    <h2 id="gameResult">Let's Play!</h2>
-    <section class="tiles">
-        <span id="usr">Player: </span>
-        <span class="alignRight" id="usrScore">0</span>
+    <section id="scoreBoard">
+      <div id="userScoreBoard">
+        <span id="user">Player: </span>
+        <span id="userScore">0</span>
+      </div>
+      <div id="compScoreBoard">
         <span id="comp">Computer: </span>
-        <span class="alignRight" id="compScore">0</span>
+        <span id="compScore">0</span>
+      </div>
     </section>
-    <button id="reset" class="genBtns" onclick="location.reload()">Play Again!</button>
+    <div id="gameBanner">
+      <h2 id="gameStatus">Let's Play!</h2>
+    </div>
+    <button id="reset" onclick="location.reload()">Play Again!</button>
   </body>
+  <link rel="stylesheet" tyle="text/css" href="style.css">
+  <script src="script.js"></script>
 </html>
