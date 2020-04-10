@@ -39,18 +39,14 @@ button {
   flex-direction: column;
   background: rgb(80, 80, 80);
   font-size: 1.4rem;
-  line-height: 70px;
-  height: 150px;
-  width: 200px;
+  line-height: 9vh;
+  height: 18vh;
+  width: 30vw;
   border: 3px solid white;
   border-radius: 10px;
 }
-#userScoreBoard {
-  margin-left: 7vw;
-}
-#compScoreBoard {
-  margin-right: 10vw;
-}
+
+#compScoreBoard {margin-right: 2vw;}
 
 #gameBanner {
   font-size: 1.6rem;
@@ -110,28 +106,15 @@ button {
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1500px) {
   html {
     font-size: 1.6rem;
   }
+  h1 {margin-top: 0}
 
-  .choiceSelect {
-    margin-top: 3vh;
-  }
-
-  #faceOffLeft, #faceOffRight {
-    margin-top: 4vh;
-  }
-
-  #scoreBoard {width: 100vw;}
   #userScoreBoard, #compScoreBoard {
-    line-height: 8vh;
-    height: 18vh;
     width: 40vw;
   }
   #userScoreBoard {margin-left: 1vw;}
   #compScoreBoard  {margin-right: 6vw;}
-}
-@media (max-height: 900px) {
-
 }
