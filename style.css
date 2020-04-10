@@ -107,14 +107,20 @@ button {
 }
 
 @media (max-width: 1500px) {
-  html {
-    font-size: 1.6rem;
-  }
+  html {font-size: 1.6rem;}
   h1 {margin-top: 0}
-
-  #userScoreBoard, #compScoreBoard {
-    width: 40vw;
-  }
+  #userScoreBoard, #compScoreBoard {width: 40vw;}
   #userScoreBoard {margin-left: 1vw;}
   #compScoreBoard  {margin-right: 6vw;}
+}
+@media (max-height: 1000px) {
+  html {font-size: 0.9rem;}
+  #userScoreBoard, #compScoreBoard {
+    height: 15vh;
+    line-height: 8vh;
+  }
+  #gameBanner {
+    margin-top: 44vh;
+    margin-bottom: 1vh;
+  }
 }
